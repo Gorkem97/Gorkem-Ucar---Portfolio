@@ -67,6 +67,26 @@ export interface FocusArea {
   textColor: string;
 }
 
+export interface ServiceItem {
+  id: string;
+  title: string;
+  count: string;
+  description: string;
+  iconType: 'game' | 'ai' | 'code' | 'architecture';
+  bgColor: string;
+}
+
+export interface RecognitionItem {
+  id: string;
+  name: string;
+  role: string;
+  organization: string;
+  quote: string;
+  year: string;
+  tag: string;
+  avatarText: string;
+}
+
 export interface PersonalInfo {
   name: string;
   greeting: string;

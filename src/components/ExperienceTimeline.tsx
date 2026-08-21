@@ -3,54 +3,88 @@ import { motion } from 'motion/react';
 import { timelineData } from '../data/portfolioData';
 
 export const ExperienceTimeline: React.FC = () => {
+  const getDotColor = (accent: string) => {
+    switch (accent) {
+      case 'teal':
+        return '#1F5A63';
+      case 'orange':
+        return '#E26D46';
+      case 'amber':
+        return '#F5AF38';
+      case 'blue':
+      default:
+        return '#1F5A63';
+    }
+  };
+
   return (
-    <section id="experience" className="py-24 sm:py-32 border-t border-[#E5E0D8]">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8">
+    <section id="experience" className="py-20 sm:py-28 bg-[#FAF5EB] border-t border-[#EAE2D3]">
+      <div className="max-w-5xl mx-auto px-6 sm:px-10">
         
-        {/* Section Header */}
-        <div className="mb-14">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8E9775] block mb-2">
-            Milestones
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#2D3436] tracking-tight">
-            Background & Journey
+        {/* Section Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1E232A] tracking-tight">
+            My Work Experience
           </h2>
-          <p className="mt-3 text-base text-[#7A7A7A] font-light max-w-xl">
-            Key academic roots, certifications, and game development milestones.
+          <p className="mt-3 text-sm sm:text-base text-[#737C8B] font-light max-w-md mx-auto">
+            Academic foundations, certifications, and game development milestones.
           </p>
         </div>
 
-        {/* Minimalist Timeline List */}
-        <div className="space-y-6">
+        {/* 2-Column Experience Rows */}
+        <div className="space-y-10 sm:space-y-12">
           {timelineData.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.4, delay: index * 0.06 }}
-              className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E5E0D8] shadow-2xs hover:border-[#8E9775] transition-all flex flex-col md:flex-row md:items-start justify-between gap-4"
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start pb-10 border-b border-[#EAE2D3]/60 last:border-0"
             >
-              <div className="md:max-w-2xl">
-                <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                  <h3 className="text-lg font-medium text-[#2D3436]">
-                    {item.title}
-                  </h3>
-                  <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-[#FCFAF7] border border-[#E5E0D8] text-[#8E9775]">
-                    {item.organization}
-                  </span>
-                </div>
-
-                <p className="text-sm text-[#555555] font-light leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-
-              <div className="shrink-0 flex items-center gap-3 self-start md:self-auto">
-                <span className="text-xs font-medium px-3 py-1 rounded-full bg-[#FCFAF7] text-[#7A7A7A] border border-[#E5E0D8]">
+              {/* Left Column: Organization & Date */}
+              <div className="md:col-span-4">
+                <h3 className="text-base sm:text-lg font-bold text-[#1E232A]">
+                  {item.organization}
+                </h3>
+                <span className="text-xs sm:text-sm text-[#737C8B] font-medium block mt-0.5">
                   {item.period}
                 </span>
+                <span className="text-[11px] font-semibold text-[#235E63] mt-1 inline-block">
+                  {item.location}
+                </span>
               </div>
+
+              {/* Right Column: Colored Bullet Dot + Role + Description */}
+              <div className="md:col-span-8 flex items-start gap-4">
+                {/* Dot */}
+                <div
+                  className="w-3.5 h-3.5 rounded-full shrink-0 mt-1 shadow-xs"
+                  style={{ backgroundColor: getDotColor(item.accentColor) }}
+                />
+
+                <div className="flex-1">
+                  <h4 className="text-base sm:text-lg font-bold text-[#1E232A]">
+                    {item.title}
+                  </h4>
+                  <p className="mt-2 text-sm text-[#4A505C] font-normal leading-relaxed">
+                    {item.description}
+                  </p>
+
+                  {/* Skills Pills */}
+                  <div className="flex flex-wrap gap-1.5 mt-3.5">
+                    {item.skills.map((skill, sIdx) => (
+                      <span
+                        key={sIdx}
+                        className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-white border border-[#EAE2D3] text-[#4A505C]"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
             </motion.div>
           ))}
         </div>

@@ -1,16 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { 
-  Github, 
-  Gamepad2, 
-  Mail, 
-  ArrowRight, 
-  FileText, 
-  MapPin,
-  GraduationCap,
-  Upload,
-  Check,
-  Camera
+  Camera, 
+  Check, 
+  Sparkles,
+  ArrowRight,
+  ShieldCheck
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
@@ -31,7 +26,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
     }
   }, []);
 
-  const handleCopyEmail = () => {
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
     navigator.clipboard.writeText(personalInfo.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -61,220 +57,230 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
     e.preventDefault();
   };
 
-  // Image priority: Custom uploaded photo -> public profile.jpg -> profile.svg
   const activeAvatar = customAvatar || '/profile.jpg';
 
   return (
     <section
       id="home"
-      className="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden flex flex-col justify-center"
+      className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 w-full">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           
-          {/* Left Column: Text & Actions */}
-          <div className="lg:col-span-7 order-2 lg:order-1">
+          {/* ================= LEFT COLUMN ================= */}
+          <div className="lg:col-span-4 order-2 lg:order-1 flex flex-col justify-between h-full py-4">
             
-            {/* University & Location Badges */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="flex flex-wrap items-center gap-2.5 text-xs sm:text-sm font-medium text-[#7A7A7A] mb-6"
-            >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E5E0D8] text-[#2D3436] shadow-2xs">
-                <GraduationCap className="w-4 h-4 text-[#8E9775]" />
-                <span>Computer Engineering @ <strong>Politecnico di Torino</strong></span>
-              </div>
+            {/* Title & Email */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#1E232A] tracking-tight leading-[1.08]">
+                  Hey There,<br />
+                  <span className="text-[#1E232A]">I'm Görkem</span>
+                </h1>
+              </motion.div>
 
-              <span className="text-[#B5B0A8] hidden sm:inline">•</span>
+              {/* Terracotta/Orange underlined email link */}
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className="mt-8 sm:mt-10"
+              >
+                <div className="inline-flex flex-col items-start group">
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    onClick={handleCopyEmail}
+                    title="Click to copy email address"
+                    className="text-sm sm:text-base font-semibold text-[#E26D46] hover:text-[#C55732] transition-colors flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <span>{personalInfo.email}</span>
+                    {copied && (
+                      <span className="text-xs bg-[#1E232A] text-white px-2 py-0.5 rounded-full font-normal flex items-center gap-1">
+                        <Check className="w-3 h-3 text-[#F5AF38]" /> Copied!
+                      </span>
+                    )}
+                  </a>
+                  {/* Decorative Hand-drawn style underline */}
+                  <div className="w-full h-0.5 bg-[#E26D46] mt-0.5 rounded-full" />
+                </div>
+              </motion.div>
+            </div>
 
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 border border-[#E5E0D8] text-[#555555]">
-                <MapPin className="w-3.5 h-3.5 text-[#8E9775]" />
-                <span>{personalInfo.location}</span>
-              </div>
-            </motion.div>
-
-            {/* Display Title */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-light text-[#2D3436] tracking-tight leading-[1.08]">
-                Görkem Uçar
-              </h1>
-              <p className="mt-5 text-xl sm:text-2xl md:text-2.5xl text-[#555555] font-light leading-snug">
-                Unity & C# Game Developer & Computer Engineering Student at Politecnico di Torino.
-              </p>
-            </motion.div>
-
-            {/* Concise 1-sentence bio */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-5 text-base sm:text-lg text-[#7A7A7A] font-light max-w-xl leading-relaxed"
-            >
-              {personalInfo.bio}
-            </motion.p>
-
-            {/* Primary Action Buttons */}
+            {/* Big Stat Callout */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-8 flex flex-wrap items-center gap-3.5"
+              className="mt-12 sm:mt-16 pt-6 flex items-baseline gap-3"
             >
-              <a
-                href="#projects"
-                id="hero-explore-projects-btn"
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-[#2D3436] hover:bg-[#3D4446] rounded-full transition-all duration-200 shadow-2xs group cursor-pointer"
-              >
-                <span>View Works</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[#8E9775]" />
-              </a>
-
-              <button
-                onClick={onOpenCV}
-                id="hero-view-cv-btn"
-                className="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-[#2D3436] bg-white hover:bg-[#F3F0EC] border border-[#E5E0D8] rounded-full transition-all duration-200 shadow-2xs hover:border-[#8E9775] cursor-pointer"
-              >
-                <FileText className="w-4 h-4 text-[#8E9775]" />
-                <span>Resume</span>
-              </button>
-
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-[#555555] hover:text-[#2D3436] hover:bg-white rounded-full border border-transparent hover:border-[#E5E0D8] transition-all cursor-pointer"
-              >
-                <span>Contact</span>
-              </a>
-
-              <div className="h-5 w-[1px] bg-[#E5E0D8] mx-1 hidden sm:block" />
-
-              {/* Social Links */}
-              <div className="flex items-center gap-2">
-                <a
-                  href={personalInfo.socialLinks.itchio}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Itch.io Games"
-                  className="p-2.5 bg-white hover:bg-[#8E9775] hover:text-white text-[#555555] border border-[#E5E0D8] rounded-full transition-all shadow-2xs"
-                >
-                  <Gamepad2 className="w-4 h-4" />
-                </a>
-
-                <a
-                  href={personalInfo.socialLinks.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="GitHub Repositories"
-                  className="p-2.5 bg-white hover:bg-[#2D3436] hover:text-white text-[#555555] border border-[#E5E0D8] rounded-full transition-all shadow-2xs"
-                >
-                  <Github className="w-4 h-4" />
-                </a>
-
-                <button
-                  onClick={handleCopyEmail}
-                  title="Copy Email"
-                  className="inline-flex items-center gap-2 px-3.5 py-2 bg-white hover:bg-[#F3F0EC] text-[#555555] border border-[#E5E0D8] rounded-full text-xs font-medium transition-all shadow-2xs cursor-pointer"
-                >
-                  {copied ? (
-                    <Check className="w-3.5 h-3.5 text-[#8E9775]" />
-                  ) : (
-                    <Mail className="w-3.5 h-3.5 text-[#8E9775]" />
-                  )}
-                  <span>{copied ? 'Copied!' : personalInfo.email}</span>
-                </button>
+              <span className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#1E232A] tracking-tight font-heading leading-none">
+                10+
+              </span>
+              <div className="flex flex-col">
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1E232A]">
+                  PROJECTS &amp; GAMES
+                </span>
+                <span className="text-[11px] font-medium text-[#737C8B]">
+                  Unity &amp; C# • Since 2021
+                </span>
               </div>
             </motion.div>
 
           </div>
 
-          {/* Right Column: Seamless Framed Portrait */}
-          <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center">
+          {/* ================= CENTER VISUAL (PORTRAIT + TEAL SPLASH) ================= */}
+          <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center items-center relative">
+            
             <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 16 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="relative w-full max-w-[320px] sm:max-w-[360px]"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px] flex items-center justify-center"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               onDrop={handleDrop}
               onDragOver={handleDragOver}
             >
               
-              {/* Outer Decorative Frame Container */}
-              <div className="p-3 sm:p-3.5 rounded-[32px] sm:rounded-[38px] bg-white border border-[#E5E0D8] shadow-sm relative group transition-all duration-300 hover:shadow-md hover:border-[#D1CABF]">
-                
-                {/* Inner Image Wrapper with Matched Border Radius */}
-                <div className="relative aspect-square w-full rounded-[22px] sm:rounded-[28px] overflow-hidden bg-[#E6E1D8]">
-                  <img
-                    src={activeAvatar}
-                    onError={(e) => {
-                      // Fallback to SVG if local image file not yet present
-                      const target = e.currentTarget;
-                      if (!target.src.endsWith('/profile.svg')) {
-                        target.src = '/profile.svg';
-                      }
-                    }}
-                    alt="Görkem Uçar"
-                    className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
-                  />
-                  
-                  {/* Subtle Vignette & Lighting Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
+              {/* Background Teal Artistic Paint Splash (SVG) */}
+              <div className="absolute -inset-6 sm:-inset-10 z-0 flex items-center justify-center pointer-events-none">
+                <svg
+                  viewBox="0 0 500 500"
+                  className="w-full h-full text-[#1F5A63] opacity-95 transition-transform duration-700 hover:scale-105"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M420,120 C460,180 470,260 440,330 C410,400 340,460 260,470 C180,480 110,440 70,380 C30,320 20,240 50,170 C80,100 150,40 230,30 C310,20 380,60 420,120 Z" />
+                  {/* Paint splatter accents */}
+                  <circle cx="90" cy="110" r="14" fill="#1F5A63" />
+                  <circle cx="65" cy="140" r="7" fill="#1F5A63" />
+                  <circle cx="440" cy="90" r="12" fill="#1F5A63" />
+                  <circle cx="465" cy="120" r="6" fill="#1F5A63" />
+                  <circle cx="410" cy="420" r="16" fill="#1F5A63" />
+                  <circle cx="120" cy="440" r="10" fill="#1F5A63" />
+                  <path d="M380,40 Q430,20 450,60 Q420,80 380,40 Z" fill="#1F5A63" />
+                  <path d="M50,390 Q30,440 70,450 Q80,410 50,390 Z" fill="#1F5A63" />
+                </svg>
+              </div>
 
-                  {/* Interactive Upload Overlay */}
-                  <button
-                    onClick={() => fileInputRef.current?.click()}
-                    title="Upload or change photo"
-                    className={`absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center gap-2 text-white transition-opacity duration-200 cursor-pointer ${
-                      isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                    }`}
-                  >
-                    <div className="p-2.5 rounded-full bg-white/20 border border-white/40">
-                      <Camera className="w-5 h-5 text-white" />
-                    </div>
-                    <span className="text-xs font-medium bg-black/50 px-3 py-1 rounded-full border border-white/20">
-                      {customAvatar ? 'Change Photo' : 'Upload / Drop Photo'}
-                    </span>
-                  </button>
+              {/* Main Portrait Frame */}
+              <div className="relative z-10 w-[270px] h-[340px] sm:w-[320px] sm:h-[390px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-[#E6DFD3] group">
+                <img
+                  src={activeAvatar}
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.src.endsWith('/profile.svg')) {
+                      target.src = '/profile.svg';
+                    }
+                  }}
+                  alt="Görkem Uçar"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
 
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) => {
-                      if (e.target.files && e.target.files[0]) {
-                        handleImageUpload(e.target.files[0]);
-                      }
-                    }}
-                  />
+                {/* Subtle bottom gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1E232A]/50 via-transparent to-transparent opacity-60 pointer-events-none" />
 
-                  {/* Clean Bottom Tag */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-                    <div className="px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-medium flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#8E9775]" />
-                      <span>Politecnico di Torino</span>
-                    </div>
+                {/* Photo Upload Overlay */}
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  title="Upload or change photo"
+                  className={`absolute inset-0 bg-[#1E232A]/50 backdrop-blur-xs flex flex-col items-center justify-center gap-2 text-white transition-opacity duration-200 cursor-pointer ${
+                    isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                  }`}
+                >
+                  <div className="p-3 rounded-full bg-white/20 border border-white/40">
+                    <Camera className="w-5 h-5 text-[#F5AF38]" />
+                  </div>
+                  <span className="text-xs font-semibold bg-black/60 px-3 py-1 rounded-full border border-white/20">
+                    {customAvatar ? 'Change Photo' : 'Upload Photo'}
+                  </span>
+                </button>
 
-                    <div className="px-2.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[#2D3436] text-[10px] font-medium border border-white/60 shadow-2xs">
-                      Unity 3D / C#
-                    </div>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => {
+                    if (e.target.files && e.target.files[0]) {
+                      handleImageUpload(e.target.files[0]);
+                    }
+                  }}
+                />
+
+                {/* Small floating tag at bottom */}
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                  <div className="px-3 py-1 rounded-full bg-[#1E232A]/80 backdrop-blur-md text-white text-[11px] font-medium flex items-center gap-1.5 border border-white/20">
+                    <span className="w-2 h-2 rounded-full bg-[#F5AF38] animate-pulse" />
+                    <span>Polito 2024</span>
+                  </div>
+                  <div className="px-2.5 py-1 rounded-full bg-white/90 text-[#1E232A] text-[10px] font-bold shadow-xs">
+                    Since 2021
                   </div>
                 </div>
 
               </div>
 
             </motion.div>
+
+          </div>
+
+          {/* ================= RIGHT COLUMN ================= */}
+          <div className="lg:col-span-3 order-3 flex flex-col justify-between h-full py-4 space-y-10 lg:space-y-0">
+            
+            {/* Tagline Statement */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="lg:pt-2"
+            >
+              <p className="text-base sm:text-lg text-[#1E232A] font-normal leading-snug">
+                I build immersive games &amp; scalable software systems, and I love what I do.
+              </p>
+              <p className="mt-3 text-xs sm:text-sm text-[#737C8B] font-light leading-relaxed">
+                Computer Engineering student at Politecnico di Torino with experience in Unity &amp; C# since 2021, versatile across diverse domains and collaborative team projects on GitHub.
+              </p>
+            </motion.div>
+
+            {/* Official Seal / Stamp Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="flex items-center gap-3.5 pt-6"
+            >
+              {/* Circular Emblem */}
+              <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border-2 border-[#1E232A] flex items-center justify-center p-1.5 shrink-0 relative group">
+                <div className="w-full h-full rounded-full border border-dashed border-[#1E232A]/50 flex flex-col items-center justify-center text-center">
+                  <ShieldCheck className="w-5 h-5 text-[#235E63]" />
+                  <span className="text-[7px] font-bold uppercase tracking-tighter text-[#1E232A] mt-0.5">
+                    POLITO
+                  </span>
+                </div>
+              </div>
+
+              {/* Seal Label */}
+              <div className="flex flex-col">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#1E232A] leading-tight">
+                  POLITECNICO DI TORINO
+                </span>
+                <span className="text-[10px] font-semibold text-[#235E63] uppercase tracking-wide mt-0.5">
+                  COMPUTER ENGINEERING
+                </span>
+                <span className="text-[9px] font-medium text-[#737C8B] uppercase tracking-wider">
+                  UNITY GAME DEVELOPER
+                </span>
+              </div>
+            </motion.div>
+
           </div>
 
         </div>
-
       </div>
     </section>
   );

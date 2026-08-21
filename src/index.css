@@ -4,18 +4,18 @@
   :root {
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     --font-heading: 'Outfit', sans-serif;
-    --font-hand: 'Caveat', cursive;
+    --font-hand: 'Caveat', 'Sacramento', cursive;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #FCFAF7;
-    color: #333333;
+    background-color: #FAF5EB;
+    color: #2D3436;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    color: #2D3436;
+    color: #1E232A;
   }
 }
 
@@ -27,17 +27,17 @@
   font-family: var(--font-heading);
 }
 
-/* Custom subtle scrollbar in Natural Tones */
+/* Custom subtle scrollbar in Warm Tones */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FCFAF7;
+  background: #FAF5EB;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E5E0D8;
+  background: #E4DCCF;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C9C4BC;
+  background: #CFC5B4;
 }

@@ -7,62 +7,59 @@ export const SkillsSection: React.FC = () => {
   const getIcon = (id: string) => {
     switch (id) {
       case 'game-engine':
-        return <Gamepad2 className="w-4 h-4 text-[#8E9775]" />;
+        return <Gamepad2 className="w-5 h-5 text-[#1F5A63]" />;
       case 'programming-cs':
-        return <Cpu className="w-4 h-4 text-[#8E9775]" />;
+        return <Cpu className="w-5 h-5 text-[#F5AF38]" />;
       case 'tools-art':
-        return <Sparkles className="w-4 h-4 text-[#8E9775]" />;
+        return <Sparkles className="w-5 h-5 text-[#E26D46]" />;
       default:
-        return <Globe className="w-4 h-4 text-[#8E9775]" />;
+        return <Globe className="w-5 h-5 text-[#235E63]" />;
     }
   };
 
   return (
-    <section id="skills" className="py-24 sm:py-32 border-t border-[#E5E0D8]">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8">
+    <section id="skills" className="py-20 sm:py-28 bg-[#FAF5EB] border-t border-[#EAE2D3]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
         
         {/* Section Header */}
-        <div className="mb-14">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8E9775] block mb-2">
-            Capabilities
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#2D3436] tracking-tight">
-            Tech Stack
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1E232A] tracking-tight">
+            Technical Stack &amp; Skills
           </h2>
-          <p className="mt-3 text-base text-[#7A7A7A] font-light max-w-xl">
-            Specialized toolset centered on Unity 3D, C#, C, and algorithmic logic.
+          <p className="mt-3 text-sm sm:text-base text-[#737C8B] font-light max-w-xl mx-auto">
+            Core capabilities spanning Unity &amp; C# since 2021, scalable architecture, AI workflow integration, practical 2D/3D &amp; lighting design, and GitHub group collaboration.
           </p>
         </div>
 
         {/* 4 Clean Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.id}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
+              viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E5E0D8] shadow-2xs flex flex-col justify-between"
+              className="p-6 rounded-3xl bg-white border border-[#EAE2D3] shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center gap-2.5 mb-4">
-                  <div className="p-2 rounded-xl bg-[#FCFAF7] border border-[#E5E0D8]">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 rounded-2xl bg-[#FAF5EB] border border-[#EAE2D3] flex items-center justify-center">
                     {getIcon(category.id)}
                   </div>
-                  <h3 className="text-lg font-medium text-[#2D3436]">
+                  <h3 className="text-base font-bold text-[#1E232A]">
                     {category.name}
                   </h3>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, sIdx) => (
                     <div
                       key={sIdx}
-                      className="px-3.5 py-1.5 rounded-full bg-[#FCFAF7] border border-[#E5E0D8] text-xs font-medium text-[#444444] flex items-center gap-1.5"
+                      className="px-3 py-1 rounded-full bg-[#FAF5EB] border border-[#EAE2D3] text-xs font-medium text-[#1E232A] flex items-center gap-1.5"
                     >
                       <span>{skill.name}</span>
-                      <span className="text-[10px] text-[#8E9775] font-semibold">
+                      <span className="text-[10px] text-[#235E63] font-bold">
                         • {skill.level}
                       </span>
                     </div>
