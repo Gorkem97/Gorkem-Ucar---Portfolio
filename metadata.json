@@ -1,0 +1,6 @@
+{
+  "name": "Görkem Uçar - Portfolio",
+  "description": "Clean, modern, warm-toned interactive portfolio for Computer Engineering student and game developer Görkem Uçar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+    --font-hand: 'Caveat', cursive;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #FCFAF7;
+    color: #333333;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: #2D3436;
+  }
+}
+
+.font-handwriting {
+  font-family: var(--font-hand);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Custom subtle scrollbar in Natural Tones */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FCFAF7;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5E0D8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C9C4BC;
+}

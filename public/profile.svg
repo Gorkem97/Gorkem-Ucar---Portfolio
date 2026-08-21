@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2DDD5"/>
+      <stop offset="50%" stop-color="#DAD4CB"/>
+      <stop offset="100%" stop-color="#CEC7BC"/>
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="30%" y1="20%" x2="70%" y2="90%">
+      <stop offset="0%" stop-color="#F7D8C4"/>
+      <stop offset="50%" stop-color="#EAC3AB"/>
+      <stop offset="100%" stop-color="#D4A78D"/>
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#3A2D25"/>
+      <stop offset="50%" stop-color="#241B16"/>
+      <stop offset="100%" stop-color="#140E0A"/>
+    </linearGradient>
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#222222"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="800" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle ambient lighting -->
+  <circle cx="400" cy="360" r="320" fill="#FFF8F0" opacity="0.25"/>
+
+  <!-- Character Group -->
+  <g id="portrait">
+    <!-- Bun / Tied Hair Back -->
+    <path d="M 520,200 C 580,180 610,240 560,280 C 530,300 490,270 510,210 Z" fill="url(#hairGrad)"/>
+    <path d="M 530,190 C 560,160 590,200 560,230 Z" fill="#2E221C"/>
+
+    <!-- Neck & Traps -->
+    <path d="M 330,520 L 330,680 L 470,680 L 470,520 Z" fill="url(#skinGrad)"/>
+    <path d="M 360,540 L 400,600 L 440,540 Z" fill="#D4A78D" opacity="0.4"/>
+
+    <!-- Shirt / Torso -->
+    <path d="M 180,680 C 220,630 300,600 400,600 C 500,600 580,630 620,680 L 650,800 L 150,800 Z" fill="url(#shirtGrad)"/>
+    <!-- Collar Line -->
+    <path d="M 340,625 C 380,655 420,655 460,625" fill="none" stroke="#333333" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Face Base -->
+    <path d="M 280,310 C 270,440 310,540 400,550 C 490,540 530,440 520,310 C 510,200 290,200 280,310 Z" fill="url(#skinGrad)" filter="url(#softShadow)"/>
+
+    <!-- Ears -->
+    <path d="M 270,360 C 255,360 255,420 275,430 Z" fill="#E2BAA2"/>
+    <path d="M 525,360 C 545,360 545,420 525,430 Z" fill="#DFAFA0"/>
+
+    <!-- Main Hair (Swept Back & Tied) -->
+    <path d="M 275,320 C 270,220 330,140 400,140 C 470,140 530,190 535,300 C 510,250 480,210 400,210 C 330,210 290,260 275,320 Z" fill="url(#hairGrad)"/>
+    <path d="M 280,240 C 320,170 420,160 510,200 C 480,180 400,170 330,200 C 300,215 285,230 280,240 Z" fill="#4B392F" opacity="0.6"/>
+    <!-- Stray lock / strands -->
+    <path d="M 470,210 C 510,250 540,310 525,360 C 520,320 495,260 470,210 Z" fill="url(#hairGrad)"/>
+
+    <!-- Eyebrows -->
+    <path d="M 310,335 C 335,325 365,325 385,340" fill="none" stroke="#2B211B" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 425,340 C 445,325 475,325 500,335" fill="none" stroke="#2B211B" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- Eyes (Looking slightly to side) -->
+    <g id="eyes">
+      <!-- Left Eye -->
+      <path d="M 320,365 C 340,355 365,355 380,368 C 365,378 340,378 320,365 Z" fill="#FFFFFF"/>
+      <ellipse cx="345" cy="366" rx="9" ry="9" fill="#2E2018"/>
+      <circle cx="342" cy="363" r="2.5" fill="#FFFFFF"/>
+      <path d="M 318,363 C 340,352 365,352 382,365" fill="none" stroke="#2B211B" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Right Eye -->
+      <path d="M 430,368 C 445,355 470,355 490,365 C 470,378 445,378 430,368 Z" fill="#FFFFFF"/>
+      <ellipse cx="455" cy="366" rx="9" ry="9" fill="#2E2018"/>
+      <circle cx="452" cy="363" r="2.5" fill="#FFFFFF"/>
+      <path d="M 428,365 C 445,352 470,352 492,363" fill="none" stroke="#2B211B" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Nose -->
+    <path d="M 405,345 L 400,435 L 415,442 C 405,448 395,448 385,442 L 395,435" fill="none" stroke="#B88A72" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Lips / Mouth -->
+    <path d="M 365,485 C 385,480 415,480 435,485" fill="none" stroke="#A86E5E" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M 372,492 C 390,500 410,500 428,492" fill="none" stroke="#9A6152" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Jawline & Cheek Contours -->
+    <path d="M 300,410 C 310,470 350,530 400,538 C 450,530 490,470 500,410" fill="none" stroke="#D19C80" stroke-width="2" opacity="0.4"/>
+  </g>
+</svg>
