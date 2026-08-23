@@ -240,10 +240,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
               className="lg:pt-2"
             >
               <p className="text-base sm:text-lg text-[#1E232A] font-normal leading-snug">
-                I build immersive games &amp; scalable software systems, and I love what I do.
+                I make scalable and cooperative systems for games, enhancing productivity with AI-integrated workflows.
               </p>
               <p className="mt-3 text-xs sm:text-sm text-[#737C8B] font-light leading-relaxed">
-                Computer Engineering student at Politecnico di Torino with experience in Unity &amp; C# since 2021, versatile across diverse domains and collaborative team projects on GitHub.
+                Computer Engineering student at Politecnico di Torino with hands-on Unity &amp; C# experience since 2021, focused on modular architecture and cooperative team workflows on GitHub.
               </p>
             </motion.div>
 

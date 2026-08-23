@@ -133,7 +133,7 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
 
               {/* Bio Summary */}
               <p className="mt-4 text-xs sm:text-sm text-[#4A505C] leading-relaxed font-light">
-                {personalInfo.bio} Specialized in Unity 3D engine programming with C# since 2021, scalable system architecture, AI workflow integration, VR interaction systems, 2D/3D &amp; lighting design foundations, and multidisciplinary group projects on GitHub.
+                {personalInfo.bio} Focused on modular gameplay systems, scalable C# state machines, AI workflow enhancement, VR interaction systems, and cooperative GitHub team development.
               </p>
             </div>
 
@@ -153,10 +153,10 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
                     <span className="text-xs font-bold text-[#235E63]">2024 – Present</span>
                   </div>
                   <div className="text-xs text-[#737C8B] mt-0.5">
-                    Location: Torino, Italy • Academic Focus: <strong>Computer Systems &amp; Software Engineering</strong>
+                    Location: Torino, Italy • Academic Focus: <strong>Computer Engineering</strong>
                   </div>
                   <p className="text-xs text-[#4A505C] mt-1.5 font-light">
-                    Studies in computer architecture, object-oriented software engineering, computational algorithms, and systems programming.
+                    Core coursework in computer architecture, software engineering, and computational systems.
                   </p>
                 </div>
 
@@ -171,7 +171,7 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
                     Location: İzmir, Turkey • Final Grade: <strong>95.73 / 100</strong>
                   </div>
                   <p className="text-xs text-[#4A505C] mt-1.5 font-light">
-                    Rigorous scientific curriculum emphasizing advanced mathematics, analytical logic, and problem-solving.
+                    Graduated with high honors, demonstrating strong academic foundation in mathematics.
                   </p>
                 </div>
 
@@ -183,7 +183,7 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
                     <span className="text-xs font-bold text-[#235E63]">2022 – 2023</span>
                   </div>
                   <p className="text-xs text-[#4A505C] mt-1.5 font-light">
-                    Comprehensive game production curriculum covering Unity engine architecture, C# scripting, mechanics prototyping, and collaborative team sprints.
+                    Hands-on training building a strong foundation in modular code design and an intuition in all aspects of video game development.
                   </p>
                 </div>
 
