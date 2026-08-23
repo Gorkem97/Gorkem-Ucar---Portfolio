@@ -8,9 +8,10 @@ import {
   Check, 
   Layers, 
   Sparkles, 
-  Cpu,
-  ChevronRight,
-  Code
+  Cpu, 
+  ChevronRight, 
+  Code,
+  Film
 } from 'lucide-react';
 import { Project } from '../types';
 import { ContinuousVideoPlayer } from './ContinuousVideoPlayer';
@@ -148,6 +149,38 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 {project.longDescription}
               </p>
             </div>
+
+            {/* Continuous Video Sequence Showcase */}
+            {project.videos && project.videos.length > 0 && (
+              <div className="p-5 bg-white rounded-2xl border border-[#EAE2D3]">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#1E232A] mb-3 flex items-center gap-1.5">
+                  <Film className="w-3.5 h-3.5 text-[#1F5A63]" />
+                  <span>Included Video Showcase Clips ({project.videos.length})</span>
+                </h4>
+                <div className="space-y-2.5">
+                  {project.videos.map((vid, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3 rounded-xl bg-[#FAF5EB] border border-[#EAE2D3] flex items-start gap-3"
+                    >
+                      <div className="w-6 h-6 rounded-full bg-[#1F5A63] text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                        {idx + 1}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h5 className="text-xs sm:text-sm font-bold text-[#1E232A]">
+                          {vid.title}
+                        </h5>
+                        {vid.description && (
+                          <p className="text-xs text-[#737C8B] mt-0.5">
+                            {vid.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Features & Key Systems */}
             {project.features && project.features.length > 0 && (

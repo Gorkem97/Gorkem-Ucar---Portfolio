@@ -28,16 +28,25 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
-    const currentVideo = videoRefs.current[activeIndex];
-    if (currentVideo) {
-      currentVideo.currentTime = 0;
-      if (autoPlay) {
-        currentVideo.play().catch(() => {
-          // Autoplay policy handled silently
-        });
+    videoRefs.current.forEach((video, idx) => {
+      if (!video) return;
+      video.muted = muted;
+      video.defaultMuted = muted;
+      if (idx === activeIndex) {
+        video.currentTime = 0;
+        if (autoPlay) {
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {
+              // Autoplay policy handled silently
+            });
+          }
+        }
+      } else {
+        video.pause();
       }
-    }
-  }, [activeIndex, autoPlay]);
+    });
+  }, [activeIndex, autoPlay, muted]);
 
   if (!videos || videos.length === 0) {
     if (fallbackImage) {
@@ -51,6 +60,14 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
   }
 
   const handleVideoEnded = (index: number) => {
+    if (videos.length === 1) {
+      const currentVideo = videoRefs.current[0];
+      if (currentVideo) {
+        currentVideo.currentTime = 0;
+        currentVideo.play().catch(() => {});
+      }
+      return;
+    }
     if (index === activeIndex) {
       const nextIndex = (activeIndex + 1) % videos.length;
       setActiveIndex(nextIndex);
@@ -58,11 +75,8 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
   };
 
   const handleVideoError = (index: number) => {
-    setFailedCount((prev) => {
-      const updated = prev + 1;
-      return updated;
-    });
-    if (index === activeIndex) {
+    setFailedCount((prev) => prev + 1);
+    if (index === activeIndex && videos.length > 1) {
       const nextIndex = (activeIndex + 1) % videos.length;
       setActiveIndex(nextIndex);
     }
@@ -99,6 +113,10 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
             key={vid.url}
             ref={(el) => {
               videoRefs.current[idx] = el;
+              if (el) {
+                el.muted = muted;
+                el.defaultMuted = muted;
+              }
             }}
             src={vid.url}
             autoPlay={autoPlay && isActive}
@@ -106,6 +124,7 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
             playsInline={playsInline}
             controls={controls && isActive}
             preload="auto"
+            loop={videos.length === 1}
             onCanPlay={handleCanPlay}
             onEnded={() => handleVideoEnded(idx)}
             onError={() => handleVideoError(idx)}
@@ -115,6 +134,20 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
           />
         );
       })}
+
+      {/* Multiple videos indicator dots */}
+      {videos.length > 1 && hasValidVideo && (
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-2 py-1 rounded-full bg-black/40 backdrop-blur-xs pointer-events-none">
+          {videos.map((_, dotIdx) => (
+            <div
+              key={dotIdx}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                dotIdx === activeIndex ? 'w-4 bg-white' : 'w-1.5 bg-white/40'
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
