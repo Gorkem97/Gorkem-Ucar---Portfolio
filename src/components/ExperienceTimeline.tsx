@@ -24,10 +24,10 @@ export const ExperienceTimeline: React.FC = () => {
         {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1E232A] tracking-tight">
-            My Work Experience
+            Experience & Education
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#737C8B] font-light max-w-md mx-auto">
-            Academic foundations, certifications, and game development milestones.
+            Academic foundations, game development experience, and technical milestones.
           </p>
         </div>
 
