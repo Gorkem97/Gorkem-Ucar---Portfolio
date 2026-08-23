@@ -29,9 +29,9 @@ export const personalInfo: PersonalInfo = {
       description: 'Continuous hands-on game development & modular systems programming',
     },
     {
-      label: 'Projects & Team Collabs',
-      value: '10+',
-      description: 'Shipped games, VR titles, AI workflow integrations, and team repositories on GitHub',
+      label: 'Shipped Projects',
+      value: '4',
+      description: 'Featured games, VR titles, and game jam releases',
     },
     {
       label: 'Academic Honors',
@@ -46,7 +46,7 @@ export const servicesData: ServiceItem[] = [
   {
     id: 'game-development',
     title: 'Unity 3D & C# Game Dev',
-    count: 'Since 2021 • 10+ Projects',
+    count: 'Since 2021 • 4 Projects',
     description: 'Engineering modular gameplay loops, responsive player mechanics, and decoupled state machines in Unity & C#.',
     iconType: 'game',
     bgColor: '#1F5A63', // Deep Teal
@@ -288,8 +288,7 @@ export const projectsData: Project[] = [
       value: 'Unity XR',
     },
     links: {
-      itchio: 'https://gorkemucar.itch.io',
-      github: 'https://github.com/Gorkem97?tab=repositories',
+      github: 'https://github.com/JustWeety/Gozde-Durmus-Vr-Project',
     },
     features: [
       'Physics-based direct hand interaction for picking, tossing, and tool usage.',
