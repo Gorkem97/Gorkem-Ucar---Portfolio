@@ -1,5 +1,11 @@
 export type ProjectCategory = 'all' | 'game' | 'vr' | 'ai' | 'algorithms';
 
+export interface ProjectVideo {
+  title: string;
+  url: string;
+  description?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -10,6 +16,7 @@ export interface Project {
   longDescription: string;
   coverImage: string;
   screenshots?: string[];
+  videos?: ProjectVideo[];
   tags: string[];
   techStack: string[];
   year: string;

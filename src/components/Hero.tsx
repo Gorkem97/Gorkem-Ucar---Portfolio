@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
-  Check, 
-  ShieldCheck
+  Check
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
@@ -183,14 +182,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
               transition={{ duration: 0.5, delay: 0.35 }}
               className="flex items-center gap-3.5 pt-6"
             >
-              {/* Circular Emblem */}
-              <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border-2 border-[#1E232A] flex items-center justify-center p-1.5 shrink-0 relative group">
-                <div className="w-full h-full rounded-full border border-dashed border-[#1E232A]/50 flex flex-col items-center justify-center text-center">
-                  <ShieldCheck className="w-5 h-5 text-[#235E63]" />
-                  <span className="text-[7px] font-bold uppercase tracking-tighter text-[#1E232A] mt-0.5">
-                    POLITO
-                  </span>
-                </div>
+              {/* Circular Emblem with polito.jpeg */}
+              <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border-2 border-[#1E232A] overflow-hidden p-0.5 shrink-0 relative shadow-sm bg-white">
+                <img
+                  src="/polito.jpeg"
+                  alt="Politecnico di Torino"
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
 
               {/* Seal Label */}

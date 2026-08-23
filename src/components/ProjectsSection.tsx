@@ -10,6 +10,7 @@ import {
 import { projectsData } from '../data/portfolioData';
 import { Project, ProjectCategory } from '../types';
 import { ProjectModal } from './ProjectModal';
+import { ContinuousVideoPlayer } from './ContinuousVideoPlayer';
 
 export const ProjectsSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all');
@@ -116,14 +117,25 @@ export const ProjectsSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Screenshot Mockup Container */}
-                  <div className="mt-5 rounded-2xl overflow-hidden shadow-lg border-2 border-white/60 aspect-16/10 bg-[#EAE2D3]">
-                    <img
-                      src={project.coverImage}
-                      alt={project.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                  {/* Media Mockup Container: Continuous Video or Screenshot */}
+                  <div className="mt-5 rounded-2xl overflow-hidden shadow-lg border-2 border-white/60 aspect-16/10 bg-[#1E232A] relative">
+                    {project.videos && project.videos.length > 0 ? (
+                      <ContinuousVideoPlayer
+                        videos={project.videos}
+                        autoPlay={true}
+                        muted={true}
+                        playsInline={true}
+                        className="w-full h-full"
+                        objectFit="cover"
+                      />
+                    ) : (
+                      <img
+                        src={project.coverImage}
+                        alt={project.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    )}
                   </div>
                 </div>
 

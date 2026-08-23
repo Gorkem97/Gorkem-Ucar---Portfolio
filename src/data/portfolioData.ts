@@ -226,6 +226,18 @@ export const projectsData: Project[] = [
     description: 'Modular gameplay architecture and AI workflow integration in Unity & C#, featuring decoupled controllers and clean state machines.',
     longDescription: 'An experimental Unity 3D project exploring the integration of Antigravity AI tooling into modern game development workflows. Emphasizes clean, scalable architecture, event-driven state decoupling, and responsive camera systems adaptable across diverse project domains.',
     coverImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop',
+    videos: [
+      {
+        title: 'Task Assignment & AI Dispatch',
+        url: '/Anti-showcase/assign.m4v',
+        description: 'AI behavior assignment, agent command dispatching, and dynamic state evaluation in Unity 3D.',
+      },
+      {
+        title: 'Object Carry & Physical Interaction',
+        url: '/Anti-showcase/carry.m4v',
+        description: 'Smooth kinematic object holding, weight responsiveness, and state machine transitions in Unity 3D.',
+      },
+    ],
     screenshots: [
       'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop',

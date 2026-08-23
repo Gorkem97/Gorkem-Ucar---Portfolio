@@ -8,12 +8,12 @@ import {
   Check, 
   Layers, 
   Sparkles, 
-  Calendar, 
   Cpu,
   ChevronRight,
   Code
 } from 'lucide-react';
 import { Project } from '../types';
+import { ContinuousVideoPlayer } from './ContinuousVideoPlayer';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -37,14 +37,27 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           transition={{ duration: 0.3 }}
           className="relative bg-[#FAF5EB] rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-[#EAE2D3] z-10 my-8"
         >
-          {/* Header Image / Gallery preview */}
+          {/* Header Video / Image Showcase */}
           <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-[#1E232A]">
-            <img
-              src={project.coverImage}
-              alt={project.title}
-              className="w-full h-full object-cover filter brightness-90"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1E232A] via-[#1E232A]/40 to-transparent" />
+            {project.videos && project.videos.length > 0 ? (
+              <ContinuousVideoPlayer
+                videos={project.videos}
+                autoPlay={true}
+                muted={true}
+                playsInline={true}
+                className="w-full h-full"
+                objectFit="cover"
+              />
+            ) : (
+              <img
+                src={project.coverImage}
+                alt={project.title}
+                className="w-full h-full object-cover filter brightness-90"
+              />
+            )}
+            
+            {/* Subtle Gradient Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1E232A] via-[#1E232A]/30 to-transparent pointer-events-none" />
 
             {/* Close Button */}
             <button
@@ -57,7 +70,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             </button>
 
             {/* Badge & Title in Cover */}
-            <div className="absolute bottom-6 left-6 right-6 text-white">
+            <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <span className="px-3 py-1 rounded-full bg-[#1F5A63] text-white text-xs font-bold shadow-xs">
                   {project.categoryLabel}
