@@ -276,6 +276,18 @@ export const projectsData: Project[] = [
     description: 'Gamified environmental sustainability simulation challenging players to manage resources and eco-decisions.',
     longDescription: 'Created specifically for GreenMate, this project models conservation and waste reduction loops through interactive gameplay challenges built in Unity and C#.',
     coverImage: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200&auto=format&fit=crop',
+    videos: [
+      {
+        title: 'GreenMate Gameplay & Mechanics',
+        url: '/greenkids/greenmate-gameplay1.m4v',
+        description: 'Interactive environmental mini-games and gameplay feedback.',
+      },
+      {
+        title: 'GreenMate Eco Challenge & Sorting',
+        url: '/greenkids/greenmate-gameplay2.m4v',
+        description: 'Sustainability tasks, feedback UI, and scoring logic.',
+      },
+    ],
     screenshots: [
       'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop',
@@ -290,8 +302,9 @@ export const projectsData: Project[] = [
       value: 'GreenMate',
     },
     links: {
-      itchio: 'https://gorkemucar.itch.io',
-      github: 'https://github.com/Gorkem97?tab=repositories',
+      itchio: 'https://gorkemucar.itch.io/greenmate',
+      github: 'https://github.com/Gorkem97/GreenKids',
+      liveDemo: 'https://gorkemucar.itch.io/greenmate',
     },
     features: [
       'Interactive resource management loop modeling energy and waste impact.',
@@ -344,6 +357,23 @@ export const projectsData: Project[] = [
     description: 'Collection of 2 playable games created under 48-hour Game Jam constraints and published on Itch.io.',
     longDescription: 'Participated in 2 separate Game Jams, designing core mechanics, programming responsive C# controllers, and shipping playable prototypes within 48 hours.',
     coverImage: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop',
+    videos: [
+      {
+        title: 'Trapped - Game Jam Showcase',
+        url: '/Jam titles/jam-trapped.mp4',
+        description: 'Fast-paced gameplay prototype delivered during a 48-hour Game Jam.',
+      },
+      {
+        title: 'Game Jam Prototype Loop',
+        url: '/Jam titles/jam-gameplay1.m4v',
+        description: 'Core controller dynamics, procedural hazards, and responsive player movement.',
+      },
+      {
+        title: 'Game Jam Title Gameplay',
+        url: '/Jam titles/jam-gameplay2.mov',
+        description: 'Interactive mechanics, sprite animation feedback, and audio integration.',
+      },
+    ],
     screenshots: [
       'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop',

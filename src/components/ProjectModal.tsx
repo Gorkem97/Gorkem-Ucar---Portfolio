@@ -42,6 +42,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             {project.videos && project.videos.length > 0 ? (
               <ContinuousVideoPlayer
                 videos={project.videos}
+                fallbackImage={project.coverImage}
                 autoPlay={true}
                 muted={true}
                 playsInline={true}

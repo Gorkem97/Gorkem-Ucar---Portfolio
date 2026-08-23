@@ -3,6 +3,7 @@ import { ProjectVideo } from '../types';
 
 interface ContinuousVideoPlayerProps {
   videos: ProjectVideo[];
+  fallbackImage?: string;
   className?: string;
   autoPlay?: boolean;
   muted?: boolean;
@@ -13,6 +14,7 @@ interface ContinuousVideoPlayerProps {
 
 export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
   videos,
+  fallbackImage,
   className = '',
   autoPlay = true,
   muted = true,
@@ -21,10 +23,11 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
   objectFit = 'cover',
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hasValidVideo, setHasValidVideo] = useState(false);
+  const [failedCount, setFailedCount] = useState(0);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
-    // Ensure the current active video plays
     const currentVideo = videoRefs.current[activeIndex];
     if (currentVideo) {
       currentVideo.currentTime = 0;
@@ -36,7 +39,16 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
     }
   }, [activeIndex, autoPlay]);
 
-  if (!videos || videos.length === 0) return null;
+  if (!videos || videos.length === 0) {
+    if (fallbackImage) {
+      return (
+        <div className={`relative overflow-hidden bg-[#1E232A] ${className}`}>
+          <img src={fallbackImage} alt="Cover" className="w-full h-full object-cover" />
+        </div>
+      );
+    }
+    return null;
+  }
 
   const handleVideoEnded = (index: number) => {
     if (index === activeIndex) {
@@ -45,8 +57,41 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
     }
   };
 
+  const handleVideoError = (index: number) => {
+    setFailedCount((prev) => {
+      const updated = prev + 1;
+      return updated;
+    });
+    if (index === activeIndex) {
+      const nextIndex = (activeIndex + 1) % videos.length;
+      setActiveIndex(nextIndex);
+    }
+  };
+
+  const handleCanPlay = () => {
+    setHasValidVideo(true);
+  };
+
+  // If all videos failed to load, show fallback image
+  if (failedCount >= videos.length && fallbackImage) {
+    return (
+      <div className={`relative overflow-hidden bg-[#1E232A] ${className}`}>
+        <img src={fallbackImage} alt="Cover" className="w-full h-full object-cover" />
+      </div>
+    );
+  }
+
   return (
     <div className={`relative overflow-hidden bg-black ${className}`}>
+      {/* Background fallback while loading */}
+      {fallbackImage && !hasValidVideo && (
+        <img
+          src={fallbackImage}
+          alt="Preview"
+          className="absolute inset-0 w-full h-full object-cover z-0 filter brightness-90"
+        />
+      )}
+
       {videos.map((vid, idx) => {
         const isActive = idx === activeIndex;
         return (
@@ -61,7 +106,9 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
             playsInline={playsInline}
             controls={controls && isActive}
             preload="auto"
+            onCanPlay={handleCanPlay}
             onEnded={() => handleVideoEnded(idx)}
+            onError={() => handleVideoError(idx)}
             className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${
               objectFit === 'contain' ? 'object-contain' : 'object-cover'
             } ${isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}
