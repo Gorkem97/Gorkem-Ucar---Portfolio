@@ -21,15 +21,6 @@ interface CVModalProps {
 }
 
 export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
-  const [avatar, setAvatar] = useState<string>('/profile.jpg');
-
-  useEffect(() => {
-    const saved = localStorage.getItem('gorkem_portfolio_avatar');
-    if (saved) {
-      setAvatar(saved);
-    }
-  }, [isOpen]);
-
   if (!isOpen) return null;
 
   const handlePrint = () => {
@@ -87,7 +78,7 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-2xl overflow-hidden bg-[#FAF5EB] border border-[#EAE2D3] shrink-0 hidden sm:block">
                     <img
-                      src={avatar}
+                      src="/profile.jpg"
                       onError={(e) => {
                         const target = e.currentTarget;
                         if (!target.src.endsWith('/profile.svg')) {

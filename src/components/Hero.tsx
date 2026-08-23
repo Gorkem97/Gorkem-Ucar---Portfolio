@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
-  Camera, 
   Check, 
-  Sparkles,
-  ArrowRight,
   ShieldCheck
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
@@ -15,16 +12,6 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
   const [copied, setCopied] = useState(false);
-  const [customAvatar, setCustomAvatar] = useState<string | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('gorkem_portfolio_avatar');
-    if (saved) {
-      setCustomAvatar(saved);
-    }
-  }, []);
 
   const handleCopyEmail = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -32,32 +19,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  const handleImageUpload = (file: File) => {
-    if (!file.type.startsWith('image/')) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const result = e.target?.result as string;
-      if (result) {
-        setCustomAvatar(result);
-        localStorage.setItem('gorkem_portfolio_avatar', result);
-      }
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleImageUpload(e.dataTransfer.files[0]);
-    }
-  };
-
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-  };
-
-  const activeAvatar = customAvatar || '/profile.jpg';
 
   return (
     <section
@@ -140,10 +101,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
               className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px] flex items-center justify-center"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-              onDrop={handleDrop}
-              onDragOver={handleDragOver}
             >
               
               {/* Background Teal Artistic Paint Splash (SVG) */}
@@ -170,7 +127,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
               {/* Main Portrait Frame */}
               <div className="relative z-10 w-[270px] h-[340px] sm:w-[320px] sm:h-[390px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-[#E6DFD3] group">
                 <img
-                  src={activeAvatar}
+                  src="/profile.jpg"
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (!target.src.endsWith('/profile.svg')) {
@@ -182,35 +139,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
                 />
 
                 {/* Subtle bottom gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1E232A]/50 via-transparent to-transparent opacity-60 pointer-events-none" />
-
-                {/* Photo Upload Overlay */}
-                <button
-                  onClick={() => fileInputRef.current?.click()}
-                  title="Upload or change photo"
-                  className={`absolute inset-0 bg-[#1E232A]/50 backdrop-blur-xs flex flex-col items-center justify-center gap-2 text-white transition-opacity duration-200 cursor-pointer ${
-                    isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                  }`}
-                >
-                  <div className="p-3 rounded-full bg-white/20 border border-white/40">
-                    <Camera className="w-5 h-5 text-[#F5AF38]" />
-                  </div>
-                  <span className="text-xs font-semibold bg-black/60 px-3 py-1 rounded-full border border-white/20">
-                    {customAvatar ? 'Change Photo' : 'Upload Photo'}
-                  </span>
-                </button>
-
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={(e) => {
-                    if (e.target.files && e.target.files[0]) {
-                      handleImageUpload(e.target.files[0]);
-                    }
-                  }}
-                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1E232A]/40 via-transparent to-transparent opacity-60 pointer-events-none" />
 
                 {/* Small floating tag at bottom */}
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
