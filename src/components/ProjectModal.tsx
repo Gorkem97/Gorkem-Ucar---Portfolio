@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { Project } from '../types';
 import { ContinuousVideoPlayer } from './ContinuousVideoPlayer';
+import { getAssetUrl } from '../utils/assets';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -52,7 +53,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               />
             ) : (
               <img
-                src={project.coverImage}
+                src={getAssetUrl(project.coverImage)}
                 alt={project.title}
                 className="w-full h-full object-cover filter brightness-90"
               />

@@ -11,6 +11,7 @@ import { projectsData } from '../data/portfolioData';
 import { Project, ProjectCategory } from '../types';
 import { ProjectModal } from './ProjectModal';
 import { ContinuousVideoPlayer } from './ContinuousVideoPlayer';
+import { getAssetUrl } from '../utils/assets';
 
 export const ProjectsSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all');
@@ -131,7 +132,7 @@ export const ProjectsSection: React.FC = () => {
                       />
                     ) : (
                       <img
-                        src={project.coverImage}
+                        src={getAssetUrl(project.coverImage)}
                         alt={project.title}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
