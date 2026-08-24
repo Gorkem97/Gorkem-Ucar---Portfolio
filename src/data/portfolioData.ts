@@ -180,12 +180,12 @@ export const projectsData: Project[] = [
     videos: [
       {
         title: 'Task Assignment & AI Dispatch',
-        url: '/videos/anti-assign.mp4',
+        url: 'videos/anti-assign.mp4',
         description: 'AI behavior assignment, agent command dispatching, and dynamic state evaluation in Unity 3D.',
       },
       {
         title: 'Object Carry & Physical Interaction',
-        url: '/videos/anti-carry.mp4',
+        url: 'videos/anti-carry.mp4',
         description: 'Smooth kinematic object holding, weight responsiveness, and state machine transitions in Unity 3D.',
       },
     ],
@@ -230,12 +230,12 @@ export const projectsData: Project[] = [
     videos: [
       {
         title: 'GreenMate Gameplay Session 1',
-        url: '/videos/greenmate-session1.mp4',
+        url: 'videos/greenmate-session1.mp4',
         description: 'Interactive environmental mini-games and gameplay loop.',
       },
       {
         title: 'GreenMate Gameplay Session 2',
-        url: '/videos/greenmate-session2.mp4',
+        url: 'videos/greenmate-session2.mp4',
         description: 'Eco challenge tasks, feedback UI, and scoring logic.',
       },
     ],
@@ -293,7 +293,7 @@ export const projectsData: Project[] = [
     videos: [
       {
         title: '6-DoF VR Spatial Mechanics & Headset Playthrough',
-        url: '/videos/vr-project.mp4',
+        url: 'videos/vr-project.mp4',
         description: 'Immersive VR spatial mechanics, physical hand tracking, and headset playthrough in Unity XR.',
       },
     ],
@@ -317,17 +317,17 @@ export const projectsData: Project[] = [
     videos: [
       {
         title: 'Trapped - Game Jam Playthrough',
-        url: '/videos/jam-trapped.mp4',
+        url: 'videos/jam-trapped.mp4',
         description: 'Obstacle avoidance, procedural hazards, and level completion mechanics.',
       },
       {
         title: 'Game Jam Showcase Session 1',
-        url: '/videos/jam-session1.mp4',
+        url: 'videos/jam-session1.mp4',
         description: '48-hour sprint Game Jam project live gameplay capture.',
       },
       {
         title: 'Game Jam Showcase Session 2',
-        url: '/videos/jam-session2.mp4',
+        url: 'videos/jam-session2.mp4',
         description: 'Core controller dynamics, sprite animation feedback, and audio integration.',
       },
     ],
