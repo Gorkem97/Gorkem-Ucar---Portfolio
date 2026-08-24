@@ -229,14 +229,14 @@ export const projectsData: Project[] = [
     coverImage: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200&auto=format&fit=crop',
     videos: [
       {
-        title: 'GreenMate Gameplay Session 1',
-        url: '/greenkids/Ekran%20Kayd%C4%B1%202026-08-23%2022.02.05-Apple%20Devices%20HD%20(Most%20Compatible).m4v',
-        description: 'Interactive environmental mini-games and gameplay loop.',
+        title: 'GreenMate Gameplay & Mechanics',
+        url: '/greenkids/greenmate-gameplay1.m4v',
+        description: 'Interactive environmental mini-games and gameplay feedback.',
       },
       {
-        title: 'GreenMate Gameplay Session 2',
-        url: '/greenkids/Ekran%20Kayd%C4%B1%202026-08-23%2022.04.15-Apple%20Devices%20HD%20(Most%20Compatible).m4v',
-        description: 'Eco challenge tasks, feedback UI, and scoring logic.',
+        title: 'GreenMate Eco Challenge & Sorting',
+        url: '/greenkids/greenmate-gameplay2.m4v',
+        description: 'Sustainability tasks, feedback UI, and scoring logic.',
       },
     ],
     screenshots: [
@@ -290,7 +290,6 @@ export const projectsData: Project[] = [
     links: {
       github: 'https://github.com/JustWeety/Gozde-Durmus-Vr-Project',
     },
-    videos: [],
     features: [
       'Physics-based direct hand interaction for picking, tossing, and tool usage.',
       'Comfort-focused locomotion including teleportation and smooth turning.',
@@ -310,19 +309,19 @@ export const projectsData: Project[] = [
     coverImage: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop',
     videos: [
       {
-        title: 'Trapped - Game Jam Playthrough',
-        url: '/Jam%20titles/trapped.mp4',
-        description: 'Obstacle avoidance, procedural hazards, and level completion mechanics.',
+        title: 'Trapped - Game Jam Showcase',
+        url: '/Jam titles/jam-trapped.mp4',
+        description: 'Fast-paced gameplay prototype delivered during a 48-hour Game Jam.',
       },
       {
-        title: 'Game Jam Showcase Session 1',
-        url: '/Jam%20titles/Ekran%20Kayd%C4%B1%202026-08-23%2022.24.31-Apple%20Devices%20HD%20(Most%20Compatible).m4v',
-        description: '48-hour sprint Game Jam project live gameplay capture.',
+        title: 'Game Jam Prototype Loop',
+        url: '/Jam titles/jam-gameplay1.m4v',
+        description: 'Core controller dynamics, procedural hazards, and responsive player movement.',
       },
       {
-        title: 'Game Jam Showcase Session 2',
-        url: '/Jam%20titles/Ekran%20Kayd%C4%B1%202026-08-23%2022.43.02.mp4',
-        description: 'Core controller dynamics, sprite animation feedback, and audio integration.',
+        title: 'Game Jam Title Gameplay',
+        url: '/Jam titles/jam-gameplay2.mov',
+        description: 'Interactive mechanics, sprite animation feedback, and audio integration.',
       },
     ],
     screenshots: [
