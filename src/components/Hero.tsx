@@ -4,7 +4,6 @@ import {
   Check
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
-import { getAssetUrl } from '../utils/assets';
 
 interface HeroProps {
   onOpenCV: () => void;
@@ -127,11 +126,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
               {/* Main Portrait Frame */}
               <div className="relative z-10 w-[270px] h-[340px] sm:w-[320px] sm:h-[390px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-[#E6DFD3] group">
                 <img
-                  src={getAssetUrl('/profile.jpg')}
+                  src="/profile.jpg"
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (!target.src.endsWith('/profile.svg')) {
-                      target.src = getAssetUrl('/profile.svg');
+                      target.src = '/profile.svg';
                     }
                   }}
                   alt="Görkem Uçar"
@@ -186,7 +185,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
               {/* Circular Emblem with polito.jpeg */}
               <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full border-2 border-[#1E232A] overflow-hidden p-0.5 shrink-0 relative shadow-sm bg-white">
                 <img
-                  src={getAssetUrl('/polito.jpeg')}
+                  src="/polito.jpeg"
                   alt="Politecnico di Torino"
                   className="w-full h-full object-cover rounded-full"
                 />

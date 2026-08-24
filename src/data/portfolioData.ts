@@ -230,12 +230,12 @@ export const projectsData: Project[] = [
     videos: [
       {
         title: 'GreenMate Gameplay Session 1',
-        url: '/greenkids/greenmate-session1.m4v',
+        url: '/greenkids/Ekran%20Kayd%C4%B1%202026-08-23%2022.02.05-Apple%20Devices%20HD%20(Most%20Compatible).m4v',
         description: 'Interactive environmental mini-games and gameplay loop.',
       },
       {
         title: 'GreenMate Gameplay Session 2',
-        url: '/greenkids/greenmate-session2.m4v',
+        url: '/greenkids/Ekran%20Kayd%C4%B1%202026-08-23%2022.04.15-Apple%20Devices%20HD%20(Most%20Compatible).m4v',
         description: 'Eco challenge tasks, feedback UI, and scoring logic.',
       },
     ],
@@ -311,17 +311,17 @@ export const projectsData: Project[] = [
     videos: [
       {
         title: 'Trapped - Game Jam Playthrough',
-        url: '/jam-titles/trapped.mp4',
+        url: '/Jam%20titles/trapped.mp4',
         description: 'Obstacle avoidance, procedural hazards, and level completion mechanics.',
       },
       {
         title: 'Game Jam Showcase Session 1',
-        url: '/jam-titles/jam-session1.m4v',
+        url: '/Jam%20titles/Ekran%20Kayd%C4%B1%202026-08-23%2022.24.31-Apple%20Devices%20HD%20(Most%20Compatible).m4v',
         description: '48-hour sprint Game Jam project live gameplay capture.',
       },
       {
         title: 'Game Jam Showcase Session 2',
-        url: '/jam-titles/jam-session2.mp4',
+        url: '/Jam%20titles/Ekran%20Kayd%C4%B1%202026-08-23%2022.43.02.mp4',
         description: 'Core controller dynamics, sprite animation feedback, and audio integration.',
       },
     ],

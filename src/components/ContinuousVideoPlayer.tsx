@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ProjectVideo } from '../types';
-import { getAssetUrl } from '../utils/assets';
 
 interface ContinuousVideoPlayerProps {
   videos: ProjectVideo[];
@@ -91,7 +90,7 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
   if (failedCount >= videos.length && fallbackImage) {
     return (
       <div className={`relative overflow-hidden bg-[#1E232A] ${className}`}>
-        <img src={getAssetUrl(fallbackImage)} alt="Cover" className="w-full h-full object-cover" />
+        <img src={fallbackImage} alt="Cover" className="w-full h-full object-cover" />
       </div>
     );
   }
@@ -101,7 +100,7 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
       {/* Background fallback while loading */}
       {fallbackImage && !hasValidVideo && (
         <img
-          src={getAssetUrl(fallbackImage)}
+          src={fallbackImage}
           alt="Preview"
           className="absolute inset-0 w-full h-full object-cover z-0 filter brightness-90"
         />
@@ -119,7 +118,7 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
                 el.defaultMuted = muted;
               }
             }}
-            src={getAssetUrl(vid.url)}
+            src={vid.url}
             autoPlay={autoPlay && isActive}
             muted={muted}
             playsInline={playsInline}

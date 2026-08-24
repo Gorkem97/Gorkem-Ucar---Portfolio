@@ -14,7 +14,6 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { personalInfo, projectsData, timelineData, skillCategories } from '../data/portfolioData';
-import { getAssetUrl } from '../utils/assets';
 
 interface CVModalProps {
   isOpen: boolean;
@@ -79,11 +78,11 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-2xl overflow-hidden bg-[#FAF5EB] border border-[#EAE2D3] shrink-0 hidden sm:block">
                     <img
-                      src={getAssetUrl('/profile.jpg')}
+                      src="/profile.jpg"
                       onError={(e) => {
                         const target = e.currentTarget;
                         if (!target.src.endsWith('/profile.svg')) {
-                          target.src = getAssetUrl('/profile.svg');
+                          target.src = '/profile.svg';
                         }
                       }}
                       alt={personalInfo.name}
