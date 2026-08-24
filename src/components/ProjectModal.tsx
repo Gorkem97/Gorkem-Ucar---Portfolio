@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, 
@@ -23,12 +23,6 @@ interface ProjectModalProps {
 }
 
 export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
-  const [activeClipIndex, setActiveClipIndex] = useState(0);
-
-  useEffect(() => {
-    setActiveClipIndex(0);
-  }, [project?.id]);
-
   if (!project) return null;
 
   return (
@@ -56,8 +50,6 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 playsInline={true}
                 className="w-full h-full"
                 objectFit="cover"
-                activeClipIndex={activeClipIndex}
-                onClipChange={(idx) => setActiveClipIndex(idx)}
               />
             ) : (
               <img
@@ -167,52 +159,26 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   <span>Included Video Showcase Clips ({project.videos.length})</span>
                 </h4>
                 <div className="space-y-2.5">
-                  {project.videos.map((vid, idx) => {
-                    const isCurrent = idx === activeClipIndex;
-                    return (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => setActiveClipIndex(idx)}
-                        className={`w-full text-left p-3 rounded-xl transition-all flex items-start gap-3 cursor-pointer ${
-                          isCurrent
-                            ? 'bg-[#1F5A63]/10 border-2 border-[#1F5A63] shadow-xs'
-                            : 'bg-[#FAF5EB] hover:bg-[#F3EAD9] border border-[#EAE2D3]'
-                        }`}
-                      >
-                        <div
-                          className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors ${
-                            isCurrent
-                              ? 'bg-[#1F5A63] text-white ring-2 ring-[#1F5A63]/30'
-                              : 'bg-[#737C8B]/20 text-[#1E232A]'
-                          }`}
-                        >
-                          {idx + 1}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-2">
-                            <h5
-                              className={`text-xs sm:text-sm font-bold ${
-                                isCurrent ? 'text-[#1F5A63]' : 'text-[#1E232A]'
-                              }`}
-                            >
-                              {vid.title}
-                            </h5>
-                            {isCurrent && (
-                              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#1F5A63] text-white shrink-0">
-                                Playing
-                              </span>
-                            )}
-                          </div>
-                          {vid.description && (
-                            <p className="text-xs text-[#737C8B] mt-0.5">
-                              {vid.description}
-                            </p>
-                          )}
-                        </div>
-                      </button>
-                    );
-                  })}
+                  {project.videos.map((vid, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3 rounded-xl bg-[#FAF5EB] border border-[#EAE2D3] flex items-start gap-3"
+                    >
+                      <div className="w-6 h-6 rounded-full bg-[#1F5A63] text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                        {idx + 1}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h5 className="text-xs sm:text-sm font-bold text-[#1E232A]">
+                          {vid.title}
+                        </h5>
+                        {vid.description && (
+                          <p className="text-xs text-[#737C8B] mt-0.5">
+                            {vid.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}

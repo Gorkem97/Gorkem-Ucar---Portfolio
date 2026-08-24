@@ -180,12 +180,12 @@ export const projectsData: Project[] = [
     videos: [
       {
         title: 'Task Assignment & AI Dispatch',
-        url: '/videos/anti-assign.mp4',
+        url: '/Anti-showcase/assign.m4v',
         description: 'AI behavior assignment, agent command dispatching, and dynamic state evaluation in Unity 3D.',
       },
       {
         title: 'Object Carry & Physical Interaction',
-        url: '/videos/anti-carry.mp4',
+        url: '/Anti-showcase/carry.m4v',
         description: 'Smooth kinematic object holding, weight responsiveness, and state machine transitions in Unity 3D.',
       },
     ],
@@ -230,12 +230,12 @@ export const projectsData: Project[] = [
     videos: [
       {
         title: 'GreenMate Gameplay Session 1',
-        url: '/videos/greenmate-session1.mp4',
+        url: '/greenkids/greenmate-session1.m4v',
         description: 'Interactive environmental mini-games and gameplay loop.',
       },
       {
         title: 'GreenMate Gameplay Session 2',
-        url: '/videos/greenmate-session2.mp4',
+        url: '/greenkids/greenmate-session2.m4v',
         description: 'Eco challenge tasks, feedback UI, and scoring logic.',
       },
     ],
@@ -290,13 +290,7 @@ export const projectsData: Project[] = [
     links: {
       github: 'https://github.com/JustWeety/Gozde-Durmus-Vr-Project',
     },
-    videos: [
-      {
-        title: '6-DoF VR Spatial Mechanics & Headset Playthrough',
-        url: '/videos/vr-project.mp4',
-        description: 'Immersive VR spatial mechanics, physical hand tracking, and headset playthrough in Unity XR.',
-      },
-    ],
+    videos: [],
     features: [
       'Physics-based direct hand interaction for picking, tossing, and tool usage.',
       'Comfort-focused locomotion including teleportation and smooth turning.',
@@ -317,17 +311,17 @@ export const projectsData: Project[] = [
     videos: [
       {
         title: 'Trapped - Game Jam Playthrough',
-        url: '/videos/jam-trapped.mp4',
+        url: '/jam-titles/trapped.mp4',
         description: 'Obstacle avoidance, procedural hazards, and level completion mechanics.',
       },
       {
         title: 'Game Jam Showcase Session 1',
-        url: '/videos/jam-session1.mp4',
+        url: '/jam-titles/jam-session1.m4v',
         description: '48-hour sprint Game Jam project live gameplay capture.',
       },
       {
         title: 'Game Jam Showcase Session 2',
-        url: '/videos/jam-session2.mp4',
+        url: '/jam-titles/jam-session2.mp4',
         description: 'Core controller dynamics, sprite animation feedback, and audio integration.',
       },
     ],
