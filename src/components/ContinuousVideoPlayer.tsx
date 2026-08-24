@@ -11,6 +11,8 @@ interface ContinuousVideoPlayerProps {
   controls?: boolean;
   playsInline?: boolean;
   objectFit?: 'cover' | 'contain';
+  activeClipIndex?: number;
+  onClipChange?: (index: number) => void;
 }
 
 export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
@@ -22,11 +24,19 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
   controls = false,
   playsInline = true,
   objectFit = 'cover',
+  activeClipIndex,
+  onClipChange,
 }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [internalIndex, setInternalIndex] = useState(0);
+  const activeIndex = activeClipIndex !== undefined ? activeClipIndex : internalIndex;
   const [hasValidVideo, setHasValidVideo] = useState(false);
   const [failedCount, setFailedCount] = useState(0);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const handleIndexChange = (newIdx: number) => {
+    setInternalIndex(newIdx);
+    onClipChange?.(newIdx);
+  };
 
   useEffect(() => {
     videoRefs.current.forEach((video, idx) => {
@@ -53,7 +63,7 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
     if (fallbackImage) {
       return (
         <div className={`relative overflow-hidden bg-[#1E232A] ${className}`}>
-          <img src={fallbackImage} alt="Cover" className="w-full h-full object-cover" />
+          <img src={getAssetUrl(fallbackImage)} alt="Cover" className="w-full h-full object-cover" />
         </div>
       );
     }
@@ -71,7 +81,7 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
     }
     if (index === activeIndex) {
       const nextIndex = (activeIndex + 1) % videos.length;
-      setActiveIndex(nextIndex);
+      handleIndexChange(nextIndex);
     }
   };
 
@@ -79,7 +89,7 @@ export const ContinuousVideoPlayer: React.FC<ContinuousVideoPlayerProps> = ({
     setFailedCount((prev) => prev + 1);
     if (index === activeIndex && videos.length > 1) {
       const nextIndex = (activeIndex + 1) % videos.length;
-      setActiveIndex(nextIndex);
+      handleIndexChange(nextIndex);
     }
   };
 
