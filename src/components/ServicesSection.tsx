@@ -93,10 +93,10 @@ export const ServicesSection: React.FC = () => {
 
               <div>
                 <span className="text-4xl sm:text-5xl font-extrabold text-[#1E232A] tracking-tight font-heading block">
-                  4
+                  10+
                 </span>
                 <span className="text-xs sm:text-sm font-semibold text-[#737C8B] mt-1 block">
-                  Shipped Projects
+                  Projects &amp; Collabs
                 </span>
               </div>
 

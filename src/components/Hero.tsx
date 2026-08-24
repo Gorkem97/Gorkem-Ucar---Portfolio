@@ -78,11 +78,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
               className="mt-12 sm:mt-16 pt-6 flex items-baseline gap-3"
             >
               <span className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#1E232A] tracking-tight font-heading leading-none">
-                4
+                10+
               </span>
               <div className="flex flex-col">
                 <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1E232A]">
-                  SHIPPED PROJECTS
+                  PROJECTS &amp; GAMES
                 </span>
                 <span className="text-[11px] font-medium text-[#737C8B]">
                   Unity &amp; C# • Since 2021
